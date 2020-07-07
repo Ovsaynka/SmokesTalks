@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startPageFragment">
+
+    <fragment
+        android:id="@+id/startPageFragment"
+        android:name="com.example.smokestalks.StartPageFragment"
+        android:label="StartPageFragment"
+        tools:layout="@layout/start_page_fragment">
+        <action
+            android:id="@+id/action_startPageFragment_to_inputNumberFragment"
+            app:destination="@id/inputNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputNumberFragment"
+        android:name="com.example.smokestalks.authorization.InputNumberFragment"
+        android:label="InputNumberFragment"
+        tools:layout="@layout/input_number_fragment">
+        <action
+            android:id="@+id/action_inputNumberFragment_to_startPageFragment"
+            app:destination="@id/startPageFragment" />
+        <action
+            android:id="@+id/action_inputNumberFragment_to_inputCodeFragment"
+            app:destination="@id/inputCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputCodeFragment"
+        android:name="com.example.smokestalks.authorization.InputCodeFragment"
+        android:label="InputCodeFragment"
+        tools:layout="@layout/input_code_fragment">
+        <action
+            android:id="@+id/action_inputCodeFragment_to_inputPersonalDataFragment"
+            app:destination="@id/inputPersonalDataFragment" />
+        <action
+            android:id="@+id/action_inputCodeFragment_to_inputNumberFragment"
+            app:destination="@id/inputNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputPersonalDataFragment"
+        android:name="com.example.smokestalks.authorization.InputPersonalDataFragment"
+        android:label="InputPersonalDataFragment"
+        tools:layout="@layout/personal_data_fragment">
+        <action
+            android:id="@+id/action_inputPersonalDataFragment_to_menuActivity"
+            app:destination="@id/menuActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/menuActivity"
+        android:name="com.example.smokestalks.main.MainPageActivity"
+        android:label="menu_navigation_button"
+        tools:layout="@layout/menu_navigation_button" />
+</navigation>

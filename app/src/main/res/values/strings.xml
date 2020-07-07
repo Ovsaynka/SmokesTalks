@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Smokes&amp;Talks</string>
+    <string name="inputTextView">Введите номер телефона для входа</string>
+    <string name="gender">Выберите пол</string>
+    <string name="city">Город</string>
+
+</resources>

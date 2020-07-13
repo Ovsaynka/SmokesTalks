@@ -28,7 +28,7 @@ class InputNumberFragment: Fragment() {
         action_bar.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_inputNumberFragment_to_startPageFragment)
         }
-        val paint = errorTextView.paint//textView.paint
+        val paint = errorTextView.paint
         val width = paint.measureText(errorTextView.text.toString())
         val textShader: Shader = LinearGradient(0f, 0f, width, errorTextView.textSize, intArrayOf(
             Color.parseColor("#F46B45"),
@@ -39,8 +39,10 @@ class InputNumberFragment: Fragment() {
         loginButton.setOnClickListener {
             if (numberEditText.length() < 17)
                 errorTextView.text = "Недействительный формат номера"
-            else
-            findNavController().navigate(R.id.action_inputNumberFragment_to_inputCodeFragment)
+            else {
+                
+                findNavController().navigate(R.id.action_inputNumberFragment_to_inputCodeFragment)
+            }
         }
     }
 

@@ -51,5 +51,9 @@
         android:id="@+id/menuActivity"
         android:name="com.example.smokestalks.main.MainPageActivity"
         android:label="menu_navigation_button"
-        tools:layout="@layout/menu_navigation_button" />
+        tools:layout="@layout/menu_navigation_button">
+       <!-- <action
+            android:id="@+id/action_inputNumberFragment_to_startPageFragment"
+            app:destination="@id/startPageFragment" />-->
+    </activity>
 </navigation>

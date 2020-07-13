@@ -7,4 +7,6 @@
     <color name="grayColor">#828282</color>
     <color name="lightColor">#F2F2F2</color>
     <color name="yellowColor">#FFCC00</color>
+    <color name="colorForView">#4F4F4F</color>
+    <color name="colorBlack">#000</color>
 </resources>

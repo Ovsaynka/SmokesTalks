@@ -10,11 +10,11 @@
         android:title="Новости"/>
     <item
         android:id="@+id/navigation_bonus"
-        android:icon="@drawable/bonus_icon"
+        android:icon="@drawable/bonuses"
         android:title="Бонусы"/>
 
     <item
         android:id="@+id/navigation_account"
-        android:icon="@drawable/account_icon"
+        android:icon="@drawable/profile_icon"
         android:title="Профиль"/>
 </menu>

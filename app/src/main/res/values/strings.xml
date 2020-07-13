@@ -3,5 +3,15 @@
     <string name="inputTextView">Введите номер телефона для входа</string>
     <string name="gender">Выберите пол</string>
     <string name="city">Город</string>
+    <string name="profile_editing">Редактирование профиля</string>
+    <string name="about_program">О программе</string>
+    <string name="push_notifications">Push-уведомления</string>
+    <string name="order_history">История заказов</string>
+    <string name="www_asedo_tech">www.asedo.tech</string>
+    <string name="copyright_2020">Copyright Ⓒ 2020</string>
+    <string name="sorry_text">Мы находимся в процессе разработки</string>
+    <string name="your_order">Ваш заказ</string>
+    <string name="no_order">Нет недавних заказов</string>
+    <string name="exit">Выход</string>
 
 </resources>

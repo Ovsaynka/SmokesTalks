@@ -52,4 +52,7 @@ dependencies {
     implementation 'ru.egslava:MaskedEditText:1.0.5'
     implementation 'com.github.chivorns.androidx:smartmaterialspinner:1.2.1'
 
+    implementation 'com.github.jtv7:RippleSwitch:1.0'
+    implementation "com.makeramen:roundedimageview:2.3.0"
+
 }

@@ -1,5 +1,6 @@
 package com.example.smokestalks.main.menu
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,19 +17,20 @@ import kotlinx.android.synthetic.main.menu_fragment.*
 import kotlinx.android.synthetic.main.menu_navigation_button.*
 
 
-class MenuFragment: Fragment() {
+class MenuFragment: Fragment(){//, DishAdapter.Listener {
 
     private val dishesList = listOf(
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
-        Dish("Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750)
+        Dish(1,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
+        Dish(2,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
+        Dish(3,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
+        Dish(4,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
+        Dish(5,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
+        Dish(6,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
+        Dish(7,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
+        Dish(8,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
+        Dish(9,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750)
     )
+    private var count =1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +40,7 @@ class MenuFragment: Fragment() {
         return inflater.inflate(R.layout.menu_fragment, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -62,5 +65,12 @@ class MenuFragment: Fragment() {
             )
         }
     }
+
+ /*   override fun onButtonClick(view: View) {
+        view.dishItem.addButton.setOnClickListener {
+            val show = activity as? Visibility
+            show?.showView()
+        }
+    }*/
 
 }

@@ -1,18 +1,19 @@
 package com.example.smokestalks.main
 
+import android.graphics.Camera
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.smokestalks.R
-import com.example.smokestalks.data.Dish
 import com.example.smokestalks.main.bonus.BonusFragment
 import com.example.smokestalks.main.menu.MenuFragment
+import com.example.smokestalks.main.menu.order.OrderFragment
 import com.example.smokestalks.main.news.NewsFragment
 import com.example.smokestalks.main.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.dish_item.*
 import kotlinx.android.synthetic.main.menu_navigation_button.*
 
 class MainPageActivity: AppCompatActivity(),
@@ -28,6 +29,9 @@ class MainPageActivity: AppCompatActivity(),
         bottomNavigationView.itemBackground
         val fragment = MenuFragment()
         addFragment(fragment)
+        orderButton.setOnClickListener {
+            navigateToFragment(OrderFragment())
+        }
     }
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -86,12 +90,10 @@ class MainPageActivity: AppCompatActivity(),
     }
 
     override fun hideView() {
-        val toolbar = titleToolbar
-        toolbar.visibility = View.GONE
+        titleToolbar.visibility = View.GONE
     }
 
     override fun showView() {
-        val show = orderField
-        show.visibility = View.VISIBLE
+        orderField.visibility = View.VISIBLE
     }
 }

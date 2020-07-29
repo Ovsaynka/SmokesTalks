@@ -8,6 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'androidx.navigation.safeargs'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -62,4 +64,5 @@ dependencies {
 
     //Firebase
     implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
 }

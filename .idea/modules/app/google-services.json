@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "926003416023",
+    "firebase_url": "https://smokes-and-talks.firebaseio.com",
+    "project_id": "smokes-and-talks",
+    "storage_bucket": "smokes-and-talks.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926003416023:android:eb075a803afe3539b41992",
+        "android_client_info": {
+          "package_name": "com.example.smokestalks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926003416023-jvch1kq3ovoi7nh6o6od5gsmriqdn06i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smokestalks",
+            "certificate_hash": "447f1088270537c923716cf970e4853dc61f8cba"
+          }
+        },
+        {
+          "client_id": "926003416023-ghhorhm8s4aveklmfubfb351ruu0jo5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrMYkLDjfvek8zmZGfLaOZCBqPfsaHRcU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926003416023-ghhorhm8s4aveklmfubfb351ruu0jo5e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "926003416023-k6o9cubsqs6ntl3iop7vg6pp3ju49ps1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.asedo.smokes-and-talks"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

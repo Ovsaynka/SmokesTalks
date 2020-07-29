@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.smokestalks.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.dialog_fragment.*
 
 class ExitDialogFragment : DialogFragment() {
@@ -22,9 +23,9 @@ class ExitDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
             exitButton.setOnClickListener {
+                FirebaseAuth.getInstance().signOut()
                 activity?.finish()
             }
-
 
         cancelButton.setOnClickListener {
             dismiss()

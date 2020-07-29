@@ -11,9 +11,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.smokestalks.R
-import com.example.smokestalks.SendID.SEND_ID
+import com.example.smokestalks.data.SendID.SEND_ID
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
@@ -25,6 +27,9 @@ import java.util.concurrent.TimeUnit
 
 
 class InputNumberFragment : Fragment() {
+
+    private val mInputCode: InputCodeFragment? = null
+    private var mVerificationId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,14 +53,12 @@ class InputNumberFragment : Fragment() {
             ), null, Shader.TileMode.REPEAT
         )
         errorTextView.paint.shader = textShader
-
         loginButton.setOnClickListener {
-            val phoneNumber = numberEditText.text
+            val phoneNumber = numberEditText.text?.replace((" ").toRegex(),"")
             if (phoneNumber?.length!! < 13)
                 errorTextView.text = "Недействительный формат номера"
-            else {
+            else
                 sendVerificationCode(phoneNumber.toString())
-            }
         }
     }
 
@@ -73,7 +76,11 @@ class InputNumberFragment : Fragment() {
     private val mCall: OnVerificationStateChangedCallbacks =
         object : OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+                val code = phoneAuthCredential.smsCode
 
+                if (code != null) {
+                    mInputCode?.verifyVerificationCode(code)
+                }
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
@@ -87,11 +94,11 @@ class InputNumberFragment : Fragment() {
                 verificationId: String,
                 token: ForceResendingToken
             ) {
-                Log.e("MainActivity", "Verification id : $verificationId")
+                mVerificationId = verificationId
+                val bundle = Bundle()
+                bundle.putString(SEND_ID, mVerificationId)
                 findNavController().navigate(
-                    R.id.action_inputNumberFragment_to_inputCodeFragment,
-                    bundleOf(SEND_ID to verificationId)
-                )
+                    R.id.action_inputNumberFragment_to_inputCodeFragment,bundle)
             }
         }
 

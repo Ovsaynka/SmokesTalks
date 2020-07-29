@@ -11,8 +11,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.smokestalks.R
-import com.example.smokestalks.SendID
-import com.google.firebase.auth.*
+import com.example.smokestalks.data.SendID
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.actionbar.view.*
 import kotlinx.android.synthetic.main.input_code_fragment.*
 import java.util.*
@@ -21,7 +24,9 @@ import java.util.*
 class InputCodeFragment : Fragment() {
 
     lateinit var mAuth: FirebaseAuth
-    private val mVerificationId = arguments?.getString(SendID.SEND_ID)
+
+    private val mVerificationId by lazy { arguments?.getString(SendID.SEND_ID) }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,7 +38,6 @@ class InputCodeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mAuth = FirebaseAuth.getInstance()
         mAuth.setLanguageCode(Locale.getDefault().language)
-
 
         include.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_inputCodeFragment_to_inputNumberFragment)
@@ -55,11 +59,10 @@ class InputCodeFragment : Fragment() {
                 inputCodeView.setEditable(true)
             }
             verifyVerificationCode(code.toString())
-            findNavController().navigate(R.id.action_inputCodeFragment_to_inputPersonalDataFragment)
         }
     }
 
-    private fun verifyVerificationCode(code: String) {
+    fun verifyVerificationCode(code: String) {
         val credential = mVerificationId?.let { PhoneAuthProvider.getCredential(it, code) }
 
         credential?.let { signInWithPhoneAuthCredential(it) }
@@ -69,7 +72,6 @@ class InputCodeFragment : Fragment() {
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val user: FirebaseUser = task.result?.user!!
                     findNavController().navigate(R.id.action_inputCodeFragment_to_inputPersonalDataFragment)
                 } else {
                     var message =

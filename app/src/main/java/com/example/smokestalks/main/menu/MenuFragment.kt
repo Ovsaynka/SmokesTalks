@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.smokestalks.CategoriesViewModel
+import com.example.smokestalks.MenuViewModel
 import com.example.smokestalks.R
 import com.example.smokestalks.data.Dish
 import kotlinx.android.synthetic.main.menu_fragment.*
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MenuFragment: Fragment(){//, DishAdapter.Listener {
 
-    private val viewModel: CategoriesViewModel by viewModel()
+    private val viewModel: MenuViewModel by viewModel()
 
     private val mCategoryAdapter : CategoriesAdapter = CategoriesAdapter()
 

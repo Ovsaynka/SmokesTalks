@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smokestalks.R
+import com.example.smokestalks.data.Category
 import kotlinx.android.synthetic.main.categories_item.view.*
 
 class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
@@ -14,14 +15,7 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHo
     private var checkedPosition = 0
    private var listener: Listener? = null
 
-    private val categoriesList = listOf(
-        "Напитки",
-        "Десерты",
-        "Горячее",
-        "Гриль",
-        "Салаты",
-        "Закуски"
-    )
+    private val categoriesList = mutableListOf<Category>()
 
     interface Listener {
         fun onItemClick(item: View, position: Int)
@@ -37,13 +31,19 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHo
         )
     }
 
+    fun setCategories(categoryList: List<Category>){
+        categoriesList.clear()
+        categoriesList.addAll(categoryList)
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return categoriesList.size
     }
     inner class CategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         @SuppressLint("ResourceAsColor")
-        fun bind(item: String, listener: Listener?) {
+        fun bind(item: Category, listener: Listener?) {
             if (checkedPosition == -1) {
                 itemView.indicatorImageView.visibility = View.GONE
             } else {
@@ -54,7 +54,7 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHo
                     itemView.menuTextView.setTextColor(Color.GRAY)
                 }
             }
-            itemView.menuTextView.text = item
+            itemView.menuTextView.text = item.name.toString()
             itemView.categoriesItem.setOnClickListener {
                 itemView.indicatorImageView.visibility = View.VISIBLE
                 itemView.menuTextView.setTextColor(Color.parseColor("#FFCC00"))

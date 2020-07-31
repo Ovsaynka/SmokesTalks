@@ -6,18 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.smokestalks.CategoriesViewModel
 import com.example.smokestalks.R
 import com.example.smokestalks.data.Dish
-import com.example.smokestalks.main.Visibility
-import kotlinx.android.synthetic.main.dish_item.*
-import kotlinx.android.synthetic.main.dish_item.view.*
 import kotlinx.android.synthetic.main.menu_fragment.*
-import kotlinx.android.synthetic.main.menu_navigation_button.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MenuFragment: Fragment(){//, DishAdapter.Listener {
+
+    private val viewModel: CategoriesViewModel by viewModel()
+
+    private val mCategoryAdapter : CategoriesAdapter = CategoriesAdapter()
 
     private val dishesList = listOf(
         Dish(1,"Помидоры гриль","Из груши, яблок, винограда, киви, апельсина",155,750),
@@ -44,6 +47,10 @@ class MenuFragment: Fragment(){//, DishAdapter.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.categories().observe(viewLifecycleOwner){
+            mCategoryAdapter.setCategories(it)
+        }
+
         subcategoriesRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = SubcategoriesAdapter()
@@ -51,7 +58,7 @@ class MenuFragment: Fragment(){//, DishAdapter.Listener {
 
         categoriesRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = CategoriesAdapter()
+            adapter = mCategoryAdapter
         }
 
         dishesRecyclerView.apply {
